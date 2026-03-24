@@ -1,0 +1,45 @@
+body {
+    margin: 100px auto;
+    padding: 0;
+
+    background-color: rgb(63, 63, 63);
+    color: #ffff;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.circulo {
+    display: flex;
+    border: 3px solid;
+    width: 400px;
+    height: 400px;
+
+    align-items: center;
+    justify-content: center;
+    
+    border-radius: 100px;
+}
+
+h1 {
+    font-size: 6rem;
+}
+
+p {
+    font-size: 3rem;
+}
+
+#like {
+    cursor: pointer;
+    font-size: 3rem;
+    background-color: transparent;
+    border: transparent;
+    margin-bottom: 30px;
+    color: #ffff;
+}
+
+#like:hover {
+    transform: scale(110%);
+    transition: 0.3s ease-in-out;
+}
