@@ -11,6 +11,8 @@ body {
     height: 100vh;
 
     background-color: #313131;
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 #title {
@@ -24,22 +26,16 @@ body {
     background-color: #313131;
     color: #ffffff;
 
+    border: 1px solid #ffff;
+
     width: 250px;
     height: auto;
 
     padding: 20px;
-    margin-bottom: 200px;
     gap: 20px;
 
     border-radius: 15px;
     box-shadow: rgb(88, 88, 88) 15px 20px 20px;
-}
-
-#box:hover {
-    transform: scale(102%);
-    transition: 0.1s ease-in-out;
-
-    background-color: #292929;
 }
 
 #add-content {
@@ -80,10 +76,42 @@ body {
     width: 20%;
     height: 30px;
 
+    cursor: pointer;
+
     border: 0.5px solid #ffffff;
     border-radius: 5px;
 }
 
 #btn-add:hover {
     background-color: #adadad;
+}
+
+.btn-remove {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+li{    
+    list-style: none;
+    background-color: #292929;
+    color: #EEEEEE;
+    padding: 10px;
+
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+}
+
+li:hover {
+    transform: scale(102%);
+    transition: 0.1s ease-in-out;
+
+    background-color: #292929;
+}
+
+#task-list{
+    padding: 0;
 }
