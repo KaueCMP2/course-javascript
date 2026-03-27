@@ -3,12 +3,7 @@ const btnAdd = document.getElementById("btn-add");
 const taskList = document.getElementById("task-list");
 const box = document.getElementById("box")
 
-let tasks = [
-    {
-        nameTask: "",
-        statusTask: false
-    }
-];
+let tasks = [];
 
 function saveTasks() {
     //?-------------------------------------------------
@@ -24,26 +19,58 @@ function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks))
 }
 
+function markRead(task) {
+    console.log(task);
+    if (task.nameTask !== "") {
+        task.statusTask = !task.statusTask
+        saveTasks();
+        showTasks();
+    }
+}
+
 function showTasks() {
     taskList.innerHTML = "";
-    for (let i = 1; i < tasks.length; i++) {
+    for (let i = 0; i < tasks.length; i++) {
         const li = document.createElement("li");
+        const liIcons = document.createElement("div");
+        liIcons.classList = "div-li-icons";
         li.innerText = tasks[i].nameTask;
 
         const btnRemove = document.createElement("button");
         btnRemove.innerText = "🗑️";
         btnRemove.className = "btn-remove"
 
+        btnRemove.addEventListener("click", removeTasks)
+
         const btnStatusBox = document.createElement("button");
-        btnStatusBox.innerText = "☐";
-        btnStatusBox.className = "btn-status";
+        btnStatusBox.addEventListener("click", () => { markRead(tasks[i]) });
 
-        btnStatusBox.addEventListener("click", markRead)
+        if (tasks[i].statusTask == false) {
+            btnStatusBox.innerText = "☐";
+            btnStatusBox.className = "btn-status";
+        }
+        else if (tasks[i].statusTask == true) {
+            btnStatusBox.innerText = "✅";
+            btnStatusBox.className = "btn-status";
+        }
+        btnStatusBox.style.color = "white";
+        btnStatusBox.style.backgroundColor = "transparent";
+        btnStatusBox.style.border = "none";
 
-        btnRemove.addEventListener("click", removeTasks);
+        if (tasks.length > 0) {
+            box.appendChild(btnClearAll)
 
-        li.appendChild(btnRemove);
-        li.appendChild(btnStatusBox);
+            btnClearAll.addEventListener("click", () => {
+                tasks = [];
+                saveTasks();
+                showTasks();
+                btnClearAll.remove();
+            });
+        }
+
+        liIcons.appendChild(btnRemove);
+        liIcons.appendChild(btnStatusBox);
+        li.appendChild(liIcons);
         taskList.appendChild(li)
     };
 }
@@ -55,20 +82,14 @@ function removeTasks(positionTask) {
     showTasks();
 }
 
-function markRead(tasks) {
-    if (tasks !== "") {
-        tasks.saveTasks = !taskList.saveTasks
-        console.log(tasks.nome, tasks.statusTask)
-    }
-}
-
 function addTasks() {
     const taskValue = inputTask.value;
     if (taskValue === "") {
         return alert("Text is needed to add the task!!!");
     }
 
-    const taskIndex = tasks.includes(taskValue);
+    const taskIndex = tasks.some(t => t.nameTask == taskValue);
+    console.log(taskIndex)
     if (taskIndex == true) {
         return alert("Create a inesistent task!!!");
     }
@@ -78,13 +99,11 @@ function addTasks() {
             nameTask: taskValue,
             statusTask: false
         });
-    console.log(tasks)
+
     inputTask.value = "";
 
     saveTasks();
     showTasks();
-
-    console.log("teste")
 }
 
 function chargeSavedTasks() {
@@ -99,16 +118,6 @@ function chargeSavedTasks() {
 
 const btnClearAll = document.createElement("button");
 btnClearAll.innerText = "Clear all";
-
-if (!tasks.length) {
-    box.appendChild(btnClearAll)
-}
-
-btnClearAll.addEventListener("click", () => {
-    tasks = [];
-    saveTasks();
-    showTasks();
-});
 
 btnAdd.addEventListener("click", addTasks);
 chargeSavedTasks();
