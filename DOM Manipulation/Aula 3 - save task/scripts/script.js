@@ -3,7 +3,6 @@ const btnAdd = document.getElementById("btn-add");
 const taskList = document.getElementById("task-list");
 const box = document.getElementById("box")
 
-
 let tasks = [
     {
         nameTask: "",
@@ -27,7 +26,7 @@ function saveTasks() {
 
 function showTasks() {
     taskList.innerHTML = "";
-    for (let i = 0; i < tasks.length; i++) {
+    for (let i = 1; i < tasks.length; i++) {
         const li = document.createElement("li");
         li.innerText = tasks[i].nameTask;
 
@@ -74,7 +73,12 @@ function addTasks() {
         return alert("Create a inesistent task!!!");
     }
 
-    tasks.push(tasks.nameTask = taskValue, tasks.statusTask = false)
+    tasks.push(
+        {
+            nameTask: taskValue,
+            statusTask: false
+        });
+    console.log(tasks)
     inputTask.value = "";
 
     saveTasks();
