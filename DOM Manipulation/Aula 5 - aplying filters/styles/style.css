@@ -1,14 +1,18 @@
-body{
+body {
+    display: flex;
+    flex-direction: column;
+
     background-color: #F4F6F8;
     max-width: 1000px;
     margin: 0 auto;
     padding: 30px;
 
+    gap: 20px;
 }
 
 h1 {
     text-align: center;
-    color:  #333333;
+    color: #333333;
 }
 
 .filtros {
@@ -16,7 +20,8 @@ h1 {
     gap: 20px;
 }
 
-input, select {
+input,
+select {
     padding: 12px;
     border: 1px solid #cccccc;
     border-radius: 8px;
@@ -26,4 +31,46 @@ input, select {
 input {
     flex: 1;
     min-width: 250;
+}
+
+.lista-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 20px;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0px 0px 5px rgb(0, 0, 0);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background-color: #dbdbdb;
+}
+
+.card h2 {
+    font-size: 18px;
+    color: #222222;
+}
+
+.descricao {
+    font-size: 14px;
+    color: #666666;
+}
+
+.preco {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.mensagem {
+    grid-column: 1 / -1;
+    color: rgb(41, 41, 41);
+    font-size: 18px;
+
+    text-align: center;
 }
