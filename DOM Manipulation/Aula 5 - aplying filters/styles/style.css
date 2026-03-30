@@ -1,0 +1,29 @@
+body{
+    background-color: #F4F6F8;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+
+}
+
+h1 {
+    text-align: center;
+    color:  #333333;
+}
+
+.filtros {
+    display: flex;
+    gap: 20px;
+}
+
+input, select {
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+input {
+    flex: 1;
+    min-width: 250;
+}

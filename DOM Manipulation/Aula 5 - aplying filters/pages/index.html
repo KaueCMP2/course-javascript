@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo de produtos</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <script defer src="/scripts/script.js"></script>
+</head>
+
+<body>
+    <h1>Catalogo de produtos</h1>
+    <div class="filtros">
+        <input type="text" id="campo-busca" placeholder="digite para buscar um produto">
+        <select id="ordenacao">
+            <option value="nome-az">Nome (A-Z)</option>
+            <option value="nome-za">Nome (Z-A)</option>
+            <option value="preco-menor">Menor preço</option>
+            <option value="preco-maior">Maior preço</option>
+        </select>
+        <div id="lista-produtos" class="lista-produtos"></div>
+    </div>
+</body>
+
+</html>
